@@ -16,7 +16,7 @@ env:
 
 jobs:
   sanity-checks:
-    runs-on: ['self-hosted', 'linux', 'x64']
+    runs-on: 'self-hosted'
     container: "ghcr.io/emqx/emqx-builder/5.1-3:1.14.5-25.3.2-1-ubuntu22.04"
     outputs:
       ct-matrix: ${{ steps.matrix.outputs.ct-matrix }}
