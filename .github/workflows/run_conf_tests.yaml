@@ -27,7 +27,6 @@ jobs:
           - emqx
           - emqx-enterprise
     steps:
-      - uses: AutoModality/action-clean@v1
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.profile }}

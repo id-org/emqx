@@ -40,7 +40,6 @@ jobs:
     container: "ghcr.io/emqx/emqx-builder/${{ matrix.builder }}:${{ matrix.elixir }}-${{ matrix.otp }}-ubuntu22.04"
 
     steps:
-      - uses: AutoModality/action-clean@v1
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.profile }}
@@ -79,7 +78,6 @@ jobs:
         shell: bash
 
     steps:
-      - uses: AutoModality/action-clean@v1
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.profile }}
@@ -127,7 +125,6 @@ jobs:
         shell: bash
 
     steps:
-      - uses: AutoModality/action-clean@v1
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.profile }}
@@ -168,7 +165,6 @@ jobs:
         profile:
           - emqx-enterprise
     steps:
-      - uses: AutoModality/action-clean@v1
       - uses: actions/download-artifact@v3
         with:
           name: ${{ matrix.profile }}
