@@ -16,7 +16,7 @@ env:
 
 jobs:
   sanity-checks:
-    runs-on: 'self-hosted'
+    runs-on: self-hosted
     container: "ghcr.io/emqx/emqx-builder/5.1-3:1.14.5-25.3.2-1-ubuntu22.04"
     outputs:
       ct-matrix: ${{ steps.matrix.outputs.ct-matrix }}
@@ -24,7 +24,7 @@ jobs:
       ct-docker: ${{ steps.matrix.outputs.ct-docker }}
       version-emqx: ${{ steps.matrix.outputs.version-emqx }}
       version-emqx-enterprise: ${{ steps.matrix.outputs.version-emqx-enterprise }}
-      runner: 'self-hosted'
+      runner: self-hosted
       builder: "ghcr.io/emqx/emqx-builder/5.1-3:1.14.5-25.3.2-1-ubuntu22.04"
       builder_vsn: "5.1-3"
       otp_vsn: "25.3.2-1"
@@ -196,6 +196,7 @@ jobs:
       - sanity-checks
     uses: ./.github/workflows/build_docker_for_test.yaml
     with:
+      runner: ${{ needs.sanity-checks.outputs.runner }}
       otp_vsn: ${{ needs.sanity-checks.outputs.otp_vsn }}
       elixir_vsn: ${{ needs.sanity-checks.outputs.elixir_vsn }}
       version-emqx: ${{ needs.sanity-checks.outputs.version-emqx }}
