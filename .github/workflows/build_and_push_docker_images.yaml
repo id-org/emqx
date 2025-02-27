@@ -55,7 +55,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ${{ github.repository_owner == 'emqx' && fromJSON(format('["self-hosted","ephemeral","linux","{0}"]', matrix.arch)) || 'ubuntu-22.04' }}
+    runs-on: ["self-hosted","ephemeral","linux","${{ matrix.arch }}"]
     outputs:
       PKG_VSN: ${{ steps.build.outputs.PKG_VSN }}
 
@@ -91,7 +91,7 @@ jobs:
           if-no-files-found: error
 
   docker:
-    runs-on: ${{ endsWith(github.repository, '/emqx') && 'ubuntu-22.04' || fromJSON('["self-hosted","ephemeral","linux","x64"]') }}
+    runs-on: ["self-hosted","ephemeral","linux","x64"]
     needs:
       - build
     defaults:

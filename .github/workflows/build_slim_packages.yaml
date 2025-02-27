@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   linux:
-    runs-on: ${{ github.repository_owner == 'emqx' && fromJSON(format('["self-hosted","ephemeral","linux","{0}"]', matrix.profile[2])) || 'ubuntu-22.04' }}
+    runs-on: ["self-hosted","ephemeral","linux","${{ matrix.profile[2] }}"]
     env:
       PROFILE: ${{ matrix.profile[0] }}
       ELIXIR: ${{ matrix.profile[1] == 'elixir' && 'yes' || 'no' }}
